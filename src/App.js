@@ -48,25 +48,25 @@ function App() {
 						<LinearProgress
 							variant="determinate"
 							value={progress}
-							className={{
-								root: 'bg-primary mt-px w-1/2',
-								bar: `${
-									strength === 'Weak'
-										? 'bg-appRed'
-										: strength === 'Good'
-										? 'bg-appBlue'
-										: strength === 'Strong'
-										? 'bg-green'
-										: 'bg-thinGrayBG'
-								} `,
-							}}
+							color={newFunction()}
 						/>
+
 						{password && <p>Password Strength is {strength}</p>}
 					</div>
 				</form>
 			</div>
 		</div>
 	);
+
+	function newFunction() {
+		return strength === 'Weak'
+			? 'secondary'
+			: strength === 'Good'
+			? 'primary'
+			: strength === 'Strong'
+			? 'secondary'
+			: 'default';
+	}
 }
 
 export default App;
