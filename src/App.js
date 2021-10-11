@@ -45,7 +45,6 @@ function App() {
 							disableUnderline
 							fullWidth
 						/>
-
 						<LinearProgress
 							variant="determinate"
 							value={progress}
@@ -62,7 +61,7 @@ function App() {
 								} `,
 							}}
 						/>
-						<p>Password Strength is {strength}</p>
+						{password && <p>Password Strength is {strength}</p>}
 					</div>
 				</form>
 			</div>
