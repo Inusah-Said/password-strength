@@ -29,7 +29,7 @@ function App() {
 
 	return (
 		<div>
-			<h2 className="text-orange">Password strength</h2>
+			<h2 className="text-appBlack">Password strength</h2>
 
 			<div className="w-1/5">
 				<form className="space-y-2">
@@ -49,6 +49,8 @@ function App() {
 							variant="determinate"
 							value={progress}
 							color={newFunction()}
+							//added the below line because for some reason the green color wasn't showing in there
+							style={{ background: strength === 'Strong' && ' #4caf50' }}
 						/>
 
 						{password && <p>Password Strength is {strength}</p>}
@@ -59,13 +61,20 @@ function App() {
 	);
 
 	function newFunction() {
-		return strength === 'Weak'
-			? 'secondary'
-			: strength === 'Good'
-			? 'primary'
-			: strength === 'Strong'
-			? 'secondary'
-			: 'default';
+		switch (strength) {
+			case 'Weak':
+				return 'secondary';
+				break;
+			case 'Good':
+				return 'primary';
+				break;
+			case 'Strong':
+				return 'success';
+				break;
+
+			default:
+				break;
+		}
 	}
 }
 
